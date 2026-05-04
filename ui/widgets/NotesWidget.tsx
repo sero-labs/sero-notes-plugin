@@ -10,7 +10,6 @@ import { useMemo } from 'react';
 import { useAppState } from '@sero-ai/app-runtime';
 import type { NotesState, Note } from '../../shared/types';
 import { DEFAULT_NOTES_STATE } from '../../shared/types';
-import { Not } from '@sinclair/typebox';
 
 // ── Pastel palette for sticky notes ──────────────────────────────
 
