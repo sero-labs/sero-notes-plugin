@@ -139,11 +139,10 @@ export function NoteEditor({ note, onUpdateNote, onDeleteNote, onTogglePin }: No
           value={title}
           onChange={(e) => handleTitleChange(e.target.value)}
           placeholder="Note title…"
-          className="mb-4 w-full border-none bg-transparent text-xl font-medium outline-none"
+          className="mb-4 w-full border-none bg-transparent text-xl font-medium outline-none nt-input"
           style={{
             color: 'var(--nt-text)',
-            fontFamily: "'DM Sans', system-ui, sans-serif",
-            padding: 0,
+            fontFamily: "'DM Sans', system-ui, sans-serif"
           }}
         />
         <textarea
@@ -155,8 +154,7 @@ export function NoteEditor({ note, onUpdateNote, onDeleteNote, onTogglePin }: No
             border: 'none',
             background: 'transparent',
             resize: 'none',
-            minHeight: 'unset',
-            padding: '5px',
+            minHeight: 'unset'
           }}
         />
       </div>
