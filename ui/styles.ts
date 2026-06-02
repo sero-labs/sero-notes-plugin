@@ -13,9 +13,11 @@ export const NOTES_STYLES = `
     --nt-text: #e8e4df;
     --nt-muted: #8b8d97;
     --nt-dim: #5c5e6a;
-    --nt-accent: #818cf8;
-    --nt-accent-hover: #a5b4fc;
-    --nt-accent-glow: rgba(129, 140, 248, 0.12);
+    --nt-accent: var(--brand-primary, #34d399);
+    --nt-accent-hover: var(--brand-primary-hover, #6ee7b7);
+    --nt-accent-foreground: var(--brand-primary-foreground, #052e1c);
+    --nt-accent-glow: var(--brand-primary-muted, rgba(52, 211, 153, 0.12));
+    --nt-accent-border: var(--brand-primary-border, rgba(52, 211, 153, 0.2));
     --nt-success: #34d399;
     --nt-danger: #f87171;
     --nt-border: rgba(255, 255, 255, 0.07);
@@ -77,13 +79,14 @@ export const NOTES_STYLES = `
     width: 100%;
     resize: vertical;
     min-height: 120px;
+    padding: 10px;
   }
   .nt-textarea::placeholder { color: var(--nt-dim); }
   .nt-textarea:focus { border-color: var(--nt-accent); }
 
   .nt-button {
     background: var(--nt-accent);
-    color: #ffffff;
+    color: var(--nt-accent-foreground);
     border: none;
     border-radius: 8px;
     padding: 8px 18px;

@@ -156,7 +156,7 @@ export function NoteEditor({ note, onUpdateNote, onDeleteNote, onTogglePin }: No
             background: 'transparent',
             resize: 'none',
             minHeight: 'unset',
-            padding: 0,
+            padding: '5px',
           }}
         />
       </div>
