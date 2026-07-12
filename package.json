@@ -1,6 +1,6 @@
 {
   "name": "@sero-ai/plugin-notes",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Note-taking app for Sero — Pi extension with web UI",
   "keywords": [
     "pi-package"
@@ -24,7 +24,27 @@
       "stateFile": ".sero/apps/notes/state.json",
       "ui": "./dist/ui/remoteEntry.js",
       "component": "NotesApp",
-      "devPort": 5178
+      "devPort": 5178,
+      "widgets": [
+        {
+          "id": "pinboard",
+          "name": "Pinboard",
+          "component": "NotesWidget",
+          "description": "Pinned and recent notes at a glance",
+          "defaultSize": {
+            "w": 2,
+            "h": 2
+          },
+          "minSize": {
+            "w": 2,
+            "h": 2
+          },
+          "maxSize": {
+            "w": 3,
+            "h": 3
+          }
+        }
+      ]
     },
     "plugin": {
       "category": "productivity",
@@ -35,48 +55,33 @@
       ],
       "minSeroVersion": "0.1.0",
       "preBuilt": false
-    },
-    "widgets": [
-      {
-        "id": "pinboard",
-        "name": "Pinboard",
-        "component": "NotesWidget",
-        "description": "Pinned and recent notes at a glance",
-        "defaultSize": {
-          "w": 2,
-          "h": 2
-        },
-        "minSize": {
-          "w": 2,
-          "h": 2
-        },
-        "maxSize": {
-          "w": 3,
-          "h": 3
-        }
-      }
-    ]
+    }
   },
   "dependencies": {
     "typebox": "^1.1.37"
   },
   "peerDependencies": {
-    "@earendil-works/pi-ai": ">=0.78.0",
-    "@earendil-works/pi-coding-agent": ">=0.78.0",
-    "@earendil-works/pi-tui": ">=0.78.0",
+    "@earendil-works/pi-agent-core": ">=0.80.6",
+    "@earendil-works/pi-ai": ">=0.80.6",
+    "@earendil-works/pi-coding-agent": ">=0.80.6",
+    "@earendil-works/pi-tui": ">=0.80.6",
     "zod": ">=4.0.0"
   },
   "devDependencies": {
-    "@module-federation/vite": "^1.11.0",
+    "@module-federation/vite": "1.11.0",
     "@sero-ai/app-runtime": "^0.1.3",
+    "@sero-ai/ui": "^0.4.1",
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^22.19.11",
     "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.7.0",
+    "lucide-react": "^0.563.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "shadcn": "^3.8.5",
     "tailwindcss": "^4.1.18",
+    "tw-animate-css": "^1.4.0",
     "typescript": "^5.9.3",
     "vite": "^6.4.1"
   }
