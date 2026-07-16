@@ -2,6 +2,7 @@
   "name": "@sero-ai/plugin-notes",
   "version": "0.2.1",
   "description": "Note-taking app for Sero — Pi extension with web UI",
+  "type": "module",
   "keywords": [
     "pi-package"
   ],
