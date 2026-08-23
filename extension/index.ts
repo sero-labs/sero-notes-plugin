@@ -16,6 +16,7 @@ import type { ExtensionAPI } from '@earendil-works/pi-coding-agent';
 import { Text } from '@earendil-works/pi-tui';
 import { Type } from 'typebox';
 
+import { withStateLock } from '@sero-ai/extension-runtime';
 import type { NotesState, Note } from '../shared/types';
 import { DEFAULT_NOTES_STATE } from '../shared/types';
 
@@ -66,6 +67,11 @@ const NotesParams = Type.Object({
   query: Type.Optional(Type.String({ description: 'Search query (for list)' })),
 });
 
+/** Actions that modify state.json. They read AND write under the shared
+ * `<stateFile>.lock` mutex, so a tool call cannot interleave with the Sero
+ * host writing the same file for the UI (#428). */
+const MUTATING_ACTIONS = new Set(['add', 'edit', 'remove', 'pin', 'unpin']);
+
 // ── Extension ──────────────────────────────────────────────────
 
 export default function (pi: ExtensionAPI) {
@@ -97,7 +103,7 @@ export default function (pi: ExtensionAPI) {
       }
       statePath = resolvedPath;
 
-      const state = await readState(statePath);
+      const dispatch = async (state: NotesState) => {
 
       switch (params.action) {
         case 'list': {
@@ -273,6 +279,13 @@ export default function (pi: ExtensionAPI) {
             details: {},
           };
       }
+      };
+
+      if (MUTATING_ACTIONS.has(params.action)) {
+        // Read-modify-write actions hold the shared lock end to end.
+        return withStateLock(statePath, async () => dispatch(await readState(statePath)));
+      }
+      return dispatch(await readState(statePath));
     },
 
     renderCall(args, theme) {
