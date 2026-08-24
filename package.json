@@ -1,7 +1,7 @@
 {
   "name": "@sero-ai/plugin-notes",
   "version": "0.2.1",
-  "description": "Note-taking app for Sero — Pi extension with web UI",
+  "description": "Note-taking app for Sero \u2014 Pi extension with web UI",
   "type": "module",
   "keywords": [
     "pi-package"
@@ -93,5 +93,8 @@
     "@earendil-works/pi-ai": "0.83.0",
     "@earendil-works/pi-coding-agent": "0.83.0",
     "@earendil-works/pi-tui": "0.83.0"
+  },
+  "overrides": {
+    "@sero-ai/common": "^0.11.0"
   }
 }
